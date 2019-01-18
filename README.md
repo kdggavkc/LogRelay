@@ -1,10 +1,9 @@
 # LogRoute
-Assign functions to logger levels to conveniently manipulate and handle messages in one method call.
+Assign functions to logger levels to conveniently manipulate and handle messages in one method call. Serves as a quick and easy replacement for handlers, though not as powerful.
 
 ## Examples
 ```
 from logroute import LogRouter
-import logging
 
 def send_to_datadog(msg, **kwargs):
     event_type = kwargs.get('event_type')
@@ -14,9 +13,6 @@ def print_all_caps(msg, **kwargs):
     print msg.upper()
 
 R = LogRouter('my relay')
-
-# can use either logging attribute style or numeric symbol to remove logging
-R.setRoutes([40], [send_to_datadog, print_all_caps]) # or R.setRoutes([logging.WARNING], [send_to_datadog, print_all_caps]) 
-
+R.setRoutes([30], [send_to_datadog, print_all_caps])
 R.WARNING('Important alert!', event_type='MEMORY LOW')
 ```
