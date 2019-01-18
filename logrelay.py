@@ -1,7 +1,7 @@
 import logging
 
 
-class LogRelay:
+class LogRouter:
     """
     Object representing a logger that allows assignment of additional functions to a logger level call, without
     having to make dedicated handlers. Purpose is to be able to tie additional calls to a logger level.
