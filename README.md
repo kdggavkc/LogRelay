@@ -3,7 +3,7 @@ Assign functions to logger levels to conveniently manipulate and handle messages
 
 ## Examples
 ```
-from logrelay import LogRelay
+from logroute import LogRouter
 import logging
 
 def send_to_datadog(msg, **kwargs):
@@ -13,10 +13,10 @@ def send_to_datadog(msg, **kwargs):
 def print_all_caps(msg, **kwargs):
     print msg.upper()
 
-R = LogRelay('my relay')
+R = LogRouter('my relay')
 
 # can use either logging attribute style or numeric symbol to remove logging
-R.setRelays([40], [send_to_datadog, print_all_caps]) # or R.setRelays([logging.WARNING], [send_to_datadog, print_all_caps]) 
+R.setRoutes([40], [send_to_datadog, print_all_caps]) # or R.setRoutes([logging.WARNING], [send_to_datadog, print_all_caps]) 
 
 R.WARNING('Important alert!', event_type='MEMORY LOW')
 ```
