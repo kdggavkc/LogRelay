@@ -16,7 +16,7 @@ def print_all_caps(msg, **kwargs):
 R = LogRelay('my relay')
 
 # can use either logging attribute style or numeric symbol to remove logging
-R.setRoutes([40], [send_to_datadog, print_all_caps]) # or R.setRoutes([logging.WARNING], [send_to_datadog, print_all_caps]) 
+R.setRelays([40], [send_to_datadog, print_all_caps]) # or R.setRelays([logging.WARNING], [send_to_datadog, print_all_caps]) 
 
 R.WARNING('Important alert!', event_type='MEMORY LOW')
 ```
