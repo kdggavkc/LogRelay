@@ -6,7 +6,7 @@ class LogRouter:
     Object representing a logger that allows assignment of additional functions to a logger level call, without
     having to make dedicated handlers. Purpose is to be able to tie additional calls to a logger level.
     """
-
+    
     def __init__(self, name, route_all=None):
         self.name = name
         self.logger = logging.getLogger(name)
