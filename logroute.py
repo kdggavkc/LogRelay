@@ -7,10 +7,10 @@ class LogRouter:
     having to make dedicated handlers. Purpose is to be able to tie additional calls to a logger level.
     """
 
-    def __init__(self, name, relay_all=False):
+    def __init__(self, name, route_all=None):
         self.name = name
         self.logger = logging.getLogger(name)
-        self.relay_all = relay_all
+        self.route_all = route_all
 
         self.setRoutes(levels=(10, 20, 30, 40, 50))  # assign logging levels to object
 
@@ -23,11 +23,11 @@ class LogRouter:
         for each level-call, run these additional calls. Attached to same log-level method names (DEBUG, INFO, etc...)
         """
 
-        def func(msg, relay=False, *args, **kwargs):
+        def func(msg, route=True, *args, **kwargs):
             logger_level_call = getattr(self.logger, level.lower())
             logger_level_call(msg)
 
-            if self.relay_all or relay:
+            if self.route_all or route:
                 for c in callables:
                     c(msg, *args, **kwargs)
 
